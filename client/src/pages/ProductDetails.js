@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../context/cart";
+import toast from "react-hot-toast";
 
 const ProductDetails = () => {
   const params = useParams();
   const navigate = useNavigate();
 
+  const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
 
@@ -42,6 +45,18 @@ const ProductDetails = () => {
     }
   };
 
+  const addToCart = (item) => {
+    if (!item?._id) {
+      toast.error("Product not loaded yet");
+      return;
+    }
+
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    toast.success("Item added to cart");
+  };
+
   return (
     <Layout>
       <div className="row container mt-2">
@@ -63,7 +78,13 @@ const ProductDetails = () => {
           <h6>Description : {product.description}</h6>
           <h6>Price : {product.price}</h6>
           <h6>Category : {product?.category?.name}</h6>
-          <button className="btn btn-secondary ms-1">ADD TO CART</button>
+
+          <button
+            className="btn btn-secondary ms-1"
+            onClick={() => addToCart(product)}
+          >
+            ADD TO CART
+          </button>
         </div>
       </div>
 
@@ -89,9 +110,11 @@ const ProductDetails = () => {
 
               <div className="card-body">
                 <h5 className="card-title">{p.name}</h5>
+
                 <p className="card-text">
                   {p.description?.substring(0, 30)}...
                 </p>
+
                 <p className="card-text">$ {p.price}</p>
 
                 <button
@@ -101,7 +124,12 @@ const ProductDetails = () => {
                   More Details
                 </button>
 
-                <button className="btn btn-secondary ms-1">ADD TO CART</button>
+                <button
+                  className="btn btn-secondary ms-1"
+                  onClick={() => addToCart(p)}
+                >
+                  ADD TO CART
+                </button>
               </div>
             </div>
           ))}

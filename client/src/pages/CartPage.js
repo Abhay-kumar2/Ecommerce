@@ -95,8 +95,8 @@ const CartPage = () => {
         </div>
         <div className="row">
           <div className="col-md-8">
-            {cart?.map((p) => (
-              <div className="row mb-2 p-3 card flex-row">
+           {cart?.map((p, index) => (
+            <div className="row mb-2 p-3 card flex-row" key={`${p._id}-${index}`}>
                 <div className="col-md-4">
                   <img
                     src={`/api/v1/product/product-photo/${p._id}`}
@@ -166,15 +166,12 @@ const CartPage = () => {
                 ""
               ) : (
                 <>
-                  <DropIn
-                    options={{
-                      authorization: clientToken,
-                      paypal: {
-                        flow: "vault",
-                      },
-                    }}
-                    onInstance={(instance) => setInstance(instance)}
-                  />
+                 <DropIn
+                options={{
+                authorization: clientToken,
+                }}
+                onInstance={(instance) => setInstance(instance)}
+                />
 
                   <button
                     className="btn btn-primary"
