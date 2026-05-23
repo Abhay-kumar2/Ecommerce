@@ -1,0 +1,70 @@
+.categories-page {
+  min-height: 80vh;
+  background: linear-gradient(to bottom, #f6efe2, #eadfc9);
+  padding: 50px 30px;
+}
+
+.categories-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.categories-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #7b1e1e;
+  margin-bottom: 15px;
+}
+
+.categories-hero p {
+  font-size: 18px;
+  color: #4a3a2a;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.categories-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.category-card {
+  background-color: #ede4d0;
+  border: 2px solid #c8a96b;
+  border-radius: 18px;
+  padding: 35px 25px;
+  text-align: center;
+  text-decoration: none;
+  color: #2b2118;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  background-color: #2b2118;
+  color: #f5e6c8;
+  border-color: #d4af37;
+}
+
+.category-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.category-card h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: capitalize;
+}
+
+.category-card p {
+  font-size: 16px;
+  margin-bottom: 0;
+  color: inherit;
+}
