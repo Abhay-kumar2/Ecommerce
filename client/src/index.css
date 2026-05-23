@@ -149,3 +149,19 @@ body {
 .container-fluid {
   background-color: transparent;
 }
+
+/* Mobile Navbar Toggle Button */
+.navbar-toggler {
+  border: 2px solid #d4af37 !important;
+  background-color: #3a2d21 !important;
+  padding: 6px 10px;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+/* Make hamburger icon visible on dark navbar */
+.navbar-toggler-icon {
+  filter: invert(1);
+}
